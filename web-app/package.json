@@ -1,0 +1,19 @@
+{
+  "name": "github-user-search",
+  "version": "1.0.0",
+  "description": "application to register/login and search github users with username. built in reactjs and nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yogeshkathayat/github-user-search.git"
+  },
+  "author": "yogesh kathayat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yogeshkathayat/github-user-search/issues"
+  },
+  "homepage": "https://github.com/yogeshkathayat/github-user-search#readme"
+}
