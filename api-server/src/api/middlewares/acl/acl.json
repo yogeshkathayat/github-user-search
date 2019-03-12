@@ -1,0 +1,17 @@
+[{
+    "group": "user",
+    "permissions": [{
+      "resource": "/user/*",
+      "methods": ["POST", "GET", "PUT", "PATCH"],
+      "action": "allow"
+    }]
+  },
+  {
+    "group": "admin",
+    "permissions": [{
+      "resource": "/admin/*",
+      "methods": ["POST", "GET", "PUT", "PATCH"],
+      "action": "allow"
+    }]
+  }
+]

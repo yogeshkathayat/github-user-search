@@ -1,0 +1,339 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the Swagger Documentation implementation of API's on NodeJS. You will find detailed documentation and model data about the REST API's. To check if an API is working , execute the API after entering the valid parameters",
+    "version": "1.0.0",
+    "title": "Parcel App",
+    "termsOfService": "",
+    "contact": {
+      "email": "api@boiler.com"
+    }
+  },
+  "host": "127.0.0.1:4001",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Parcel App",
+      "description": "Everything about your Parcel Appe"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Register new user",
+        "description": "Adds a new user data information into the database",
+        "operationId": "UserSaveData",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "register data to be added to db",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/register"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully Created"
+          },
+          "409": {
+            "description": "Invalid input Error"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Login User",
+        "description": "Login User via email and password",
+        "operationId": "UserLoginData",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "email and password for login",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully logged in"
+          },
+          "401": {
+            "description": "Invalid username/password"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/auth/forgot-password": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "forgot password",
+        "description": "forgot password",
+        "operationId": "forgotPassword",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "forgotPassword",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/forgotPassword"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully sent mail"
+          },
+          "401": {
+            "description": "Invalid username"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/auth/reset-password": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "reset password",
+        "description": "reset password",
+        "operationId": "resetPassword",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "resetPassword",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/resetPassword"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully changed password"
+          },
+          "401": {
+            "description": "Invalid username"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "register": {
+      "type": "object",
+      "required": [
+        "firstName",
+        "lastName",
+        "email",
+        "password",
+        "type",
+        "countryId",
+        "provider"
+      ],
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "example": "john"
+        },
+        "lastName": {
+          "type": "string",
+          "example": "player"
+        },
+        "email": {
+          "type": "string",
+          "example": "john@bg.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "123456"
+        },
+        "phoneNo": {
+          "type": "number",
+          "example": 9098541230
+        }
+      },
+      "xml": {
+        "name": "register"
+      }
+    },
+    "login": {
+      "type": "object",
+      "required": [
+        "email",
+        "password"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "john@bg.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "123456"
+        }
+      },
+      "xml": {
+        "name": "signin"
+      }
+    },
+    "forgotPassword": {
+      "type": "object",
+      "required": [
+        "email"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "keyurkd07@gmail.com"
+        }
+      },
+      "xml": {
+        "name": "forgotPassword"
+      }
+    },
+    "resetPassword": {
+      "type": "object",
+      "required": [
+        "password",
+        "activationCode"
+      ],
+      "properties": {
+        "password": {
+          "type": "string",
+          "example": "password"
+        },
+        "activationCode":{
+          "type": "string",
+          "example": "123445"
+        }
+      },
+      "xml": {
+        "name": "forgotPassword"
+      }
+    },
+    "verifyEmail": {
+      "type": "object",
+      "required": [
+        "activationCode"
+      ],
+      "properties": {
+        "activationCode": {
+          "type": "string",
+          "example": "xfdsgsgsg"
+        }
+      },
+      "xml": {
+        "name": "verifyEmail"
+      }
+    },
+    "pollData": {
+      "type": "object",
+      "required": [
+        "pollTitle",
+        "pollOptions"
+      ],
+      "properties": {
+        "pollTitle": {
+          "type": "string",
+          "example": "poll1"
+        },
+        "pollOptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": ["option1","option2","option3"]
+        }
+      },
+      "xml": {
+        "name": "pollData"
+      }
+    },
+    "voteData": {
+      "type": "object",
+      "properties": {
+        "optionName": {
+          "type": "string",
+          "example": "option1"
+        },
+        "_id": {
+          "type": "string"
+        },
+        "vote":{
+          "type": "number"
+        }
+      },
+      "xml": {
+        "name": "voteData"
+      }
+    },
+    "optionDetail":{
+      "type": "object",
+      "properties": {
+        "optionName": {
+          "type": "string",
+          "example": "option1"
+        }
+      },
+      "xml": {
+        "name": "voteData"
+      }
+    }
+}
+}

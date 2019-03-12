@@ -1,0 +1,9 @@
+apps:
+    - script        : ./src/index.js
+      name          : csm-backend-micro-user-services
+      instances     : 1
+      watch         : true
+      silent        : true
+      ignore_watch  : ['node_modules *.log .git/ *.md config/*.conf docker-compose.yml Dockerfile LICENSE']
+      watch_options :
+        usePolling: true # fixes issue on shared volume, watch won't work w/o this
